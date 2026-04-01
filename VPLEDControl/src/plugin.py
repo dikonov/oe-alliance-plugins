@@ -188,10 +188,14 @@ class Channelnumber:
 	def RecordingLed(self):
 		global MyRecLed
 		try:
-			#not all images support recording type indicators
-			recordings = self.session.nav.getRecordings(False, Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue()))
+			# Not all images have getIndicatorRecordingsCount
+			recordings = self.session.nav.getIndicatorRecordingsCount()
 		except:
-			recordings = self.session.nav.getRecordings()
+			try:
+				# Not all images support recording type indicators / TODO: This should be replaced by getIndicatorRecordingsCount
+				recordings = self.session.nav.getRecordings(False, Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue()))
+			except:
+				recordings = self.session.nav.getRecordings()
 		if recordings:
 			MyRecLed = True
 		else:
@@ -366,10 +370,10 @@ def controliniVfd():
 	global gReason
 	global mySession
 
-	if gReason == 0 and mySession != None and iniVfd == None:
+	if gReason == 0 and mySession is not None and iniVfd is None:
 		print("[Stb LED] Starting !!")
 		iniVfd = VFD_INI(mySession)
-	elif gReason == 1 and iniVfd != None:
+	elif gReason == 1 and iniVfd is not None:
 		print("[Stb LED] Stopping !!")
 
 		iniVfd = None

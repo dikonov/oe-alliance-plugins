@@ -247,7 +247,7 @@ class StreamsThumb(StreamsThumbCommon):
 					titleData = elem[0].attrib.get('title')
 					titleDecode = titleData.encode('charmap', 'ignore')
 
-					match = re.search("3player\s+\|\s+(.+),\s+(\d\d/\d\d/\d\d\d\d)\.\s*(.*)", titleDecode)
+					match = re.search(r"3player\s+\|\s+(.+),\s+(\d\d/\d\d/\d\d\d\d)\.\s*(.*)", titleDecode)
 					name_tmp = str(match.group(1))
 					name = checkUnicode(name_tmp)
 					date_tmp = str(match.group(2))
@@ -261,7 +261,7 @@ class StreamsThumb(StreamsThumbCommon):
 						else:
 							duration = _("Duration: ") + str(elem[4].text)
 
-				if iconSet == True:
+				if iconSet is True:
 					# For all functions other than 'straight' we get the stream url from the icon url.
 					if self.cmd != 'straight':
 						stream = icon
@@ -312,7 +312,7 @@ class StreamsThumb(StreamsThumbCommon):
 					short = checkUnicode(short_tmp)
 					hrefSet = True
 
-				if hrefSet == True:
+				if hrefSet is True:
 					weekList.append((date, name, short, channel, stream, icon, duration, False))
 					hrefSet = False
 

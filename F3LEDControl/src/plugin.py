@@ -63,7 +63,7 @@ class Channelnumber:
 			self.dvb_service = ""
 		else:
 			str_service = playref.toString()
-			if not '%3a//' in str_service and str_service.rsplit(":", 1)[1].startswith("/"):
+			if '%3a//' not in str_service and str_service.rsplit(":", 1)[1].startswith("/"):
 				self.dvb_service = "video"
 			else:
 				self.dvb_service = ""
@@ -303,9 +303,9 @@ def controlSeg():
 	global gReason
 	global mySession
 
-	if gReason == 0 and mySession != None and Seg == None:
+	if gReason == 0 and mySession is not None and Seg is None:
 		Seg = SEG(mySession)
-	elif gReason == 1 and Seg != None:
+	elif gReason == 1 and Seg is not None:
 		Seg = None
 
 

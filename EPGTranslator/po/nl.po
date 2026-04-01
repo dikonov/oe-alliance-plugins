@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-28 23:49+0000\n"
+"POT-Creation-Date: 2025-07-09 08:57+0100\n"
 "PO-Revision-Date: 2021-03-02 11:48+0100\n"
 "Last-Translator: Rob van der Does <RobvanderDoes@Gmail.com>\n"
 "Language-Team: none\n"
@@ -18,11 +18,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 
+msgid "Access plugin setup"
+msgstr ""
+
+msgid "Access text translator"
+msgstr ""
+
 msgid "Afrikaans"
 msgstr ""
 
 msgid "Albanian"
 msgstr ""
+
+#, fuzzy
+msgid "Alternate Language:"
+msgstr "Detecteer taal"
+
+#, fuzzy
+msgid "Alternative language the source text can be translated into."
+msgstr "Dit is de taal waarin de brontaal zal worden vertaald."
 
 msgid "Arabic"
 msgstr ""
@@ -57,6 +71,9 @@ msgstr ""
 msgid "Clear cache"
 msgstr "Maak cache leeg"
 
+msgid "Close plugin"
+msgstr ""
+
 msgid "Croatian"
 msgstr ""
 
@@ -75,17 +92,35 @@ msgstr "Detecteer taal"
 msgid "Dutch"
 msgstr "Nederlands"
 
+msgid "EPG Translator"
+msgstr ""
+
+msgid "EPG Translator Actions"
+msgstr ""
+
+msgid "EPG Translator Setup"
+msgstr ""
+
+msgid "EPG Translator Setup - "
+msgstr ""
+
+msgid "EPG Translator version: "
+msgstr ""
+
+msgid "EPGTranslator Actions"
+msgstr ""
+
 msgid "English"
 msgstr ""
 
 msgid "Estonian"
 msgstr ""
 
+msgid "Event View Actions"
+msgstr ""
+
 msgid "EventViews open translated:"
 msgstr "Eventview opent met vertaling:"
-
-msgid "Exit"
-msgstr "Sluit af"
 
 msgid "Filipino"
 msgstr ""
@@ -110,6 +145,9 @@ msgstr ""
 
 msgid "Hide"
 msgstr "Verberg"
+
+msgid "Hide screen"
+msgstr ""
 
 msgid "Hungarian"
 msgstr ""
@@ -150,10 +188,19 @@ msgstr ""
 msgid "Maltese"
 msgstr ""
 
+msgid "Next EPG event"
+msgstr ""
+
 msgid "No"
 msgstr "Nee"
 
 msgid "Norwegian"
+msgstr ""
+
+msgid "On-line translation"
+msgstr ""
+
+msgid "Original"
 msgstr ""
 
 msgid "Persian"
@@ -165,6 +212,9 @@ msgstr ""
 msgid "Portuguese"
 msgstr ""
 
+msgid "Previous EPG event"
+msgstr ""
+
 msgid "Refresh EPG"
 msgstr "Ververs EPG"
 
@@ -174,20 +224,29 @@ msgstr ""
 msgid "Russian"
 msgstr ""
 
-msgid "Save"
-msgstr "Sla op"
+#, fuzzy
+msgid "Scroll translated text down"
+msgstr "Vertaal tekst"
 
-msgid "Selct this option to show the source text as well as the translated text in EPG Translator main screen show."
-msgstr "Kies deze optie om zowel de brontaal als de doeltaal in het hoofdscherm van EPG translator te laten zien."
+#, fuzzy
+msgid "Scroll translated text up"
+msgstr "Vertaal tekst"
 
-msgid "Select the source langauge to be translated, or select 'Detect Langauge' and the translator will attempt to automatically detect the source language."
+#, fuzzy
+msgid "Select the source language to be translated, or select 'Detect Language' and the translator will attempt to automatically detect the source language."
 msgstr "Kies de te vertalen brontaal of kies \"Detecteer taal\" waarmee de translator zal proberen de brontaal automatisch te vinden."
+
+msgid "Select this option to show the source text as well as the translated text in EPG Translator main screen show."
+msgstr "Kies deze optie om zowel de brontaal als de doeltaal in het hoofdscherm van EPG translator te laten zien."
 
 msgid "Serbian"
 msgstr ""
 
 msgid "Show Source EPG:"
 msgstr "Toon brontaal:"
+
+msgid "Show plugin info"
+msgstr ""
 
 msgid "Show traceback in errors:"
 msgstr "Tone 'traceback' in fouten:"
@@ -210,8 +269,11 @@ msgstr ""
 msgid "Swedish"
 msgstr ""
 
-msgid "TEXT"
-msgstr "TEKST"
+msgid "Text Translator:"
+msgstr ""
+
+msgid "Text input"
+msgstr ""
 
 msgid "This is a development feature. On a translation failure, if enabled, extra debug information will be logged."
 msgstr "Deze optie is in ontwikkeling. Als het vertalen niet lukt, zal extra debug informatie worden geschreven."
@@ -219,7 +281,19 @@ msgstr "Deze optie is in ontwikkeling. Als het vertalen niet lukt, zal extra deb
 msgid "This is the language the source text will be translated into."
 msgstr "Dit is de taal waarin de brontaal zal worden vertaald."
 
-msgid "Translate text"
+#, fuzzy
+msgid "Toggle language"
+msgstr "Brontaal:"
+
+msgid "Toggle translation"
+msgstr ""
+
+#, fuzzy
+msgid "Translate your EPG"
+msgstr "Vertaal tekst"
+
+#, fuzzy
+msgid "Translation error"
 msgstr "Vertaal tekst"
 
 msgid "Translations are cached to avoid unnecessary re-translation. This is the number of hours the translation will survive in the cache before deletion. Select '0' for the cache entry to expire once the program has completed."
@@ -245,3 +319,9 @@ msgstr "Als Eventview geopend wordt, zal de vertaling meteen plaatsvinden."
 
 msgid "Yes"
 msgstr "Ja"
+
+msgid "Zap down"
+msgstr ""
+
+msgid "Zap up"
+msgstr ""

@@ -320,7 +320,7 @@ class FPGAUpgrade(Screen):
 			self.doExit()
 
 	def doUpgradeHandler(self, confirmed):
-		if confirmed == False:
+		if confirmed is False:
 			return
 
 		path = ''
@@ -338,7 +338,7 @@ class FPGAUpgrade(Screen):
 				device = d
 				break
 
-		if device == None or len(device) == 0:
+		if device is None or len(device) == 0:
 			message = "Fail to upgrade.\nCause : Can't found device.\nDo you want to exit?"
 			self.session.openWithCallback(self.onCallbackHandler, MessageBox, _(message), MessageBox.TYPE_YESNO, timeout=10, default=True)
 			print("DEVICE_LIST : ", device_list)

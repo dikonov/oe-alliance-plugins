@@ -1,6 +1,6 @@
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = ABMCustomMixImporter AboutBoxBranding autoBLchanger Blindscan BTDevicesManager ChannelsImporter DLNABrowser DLNAServer EPGTranslator Fempa LCD4linux OnDemand RemoteChannelStreamConverter SatipClient StreamTV tmdb TunerServer xmlUpdate 3GModemManager Chefkoch PiconsUpdater TVSpielfilm LottoExtended CleverTanken
+SUBDIRS = ABMCustomMixImporter AboutBoxBranding autoBLchanger Blindscan ChannelsImporter DLNABrowser DLNAServer EPGTranslator Fempa LCD4linux OnDemand RemoteChannelStreamConverter SatipClient StreamTV tmdb TunerServer xmlUpdate 3GModemManager Chefkoch PiconsUpdater TVSpielfilm LottoExtended CleverTanken PiconManager
 
 if MIPSEL
 SUBDIRS += WirelessAccessPoint
@@ -30,10 +30,6 @@ if DINOBOT
 SUBDIRS += MultiTransCodingSetup
 endif
 
-if CC1
-SUBDIRS += MultiTransCodingSetup
-endif
-
 if XTREND
 SUBDIRS += XtrendFancontrol XtrendRemote
 endif
@@ -43,10 +39,6 @@ SUBDIRS += MultiTransCodingSetup
 endif
 
 if ET13000
-SUBDIRS += MultiTransCodingSetup
-endif
-
-if SF5008
 SUBDIRS += MultiTransCodingSetup
 endif
 
@@ -294,6 +286,10 @@ if H9COMBO
 SUBDIRS += MultiTransCodingSetup
 endif
 
+if H9COMBOSE
+SUBDIRS += MultiTransCodingSetup
+endif
+
 if H10
 SUBDIRS += MultiTransCodingSetup
 endif
@@ -410,10 +406,6 @@ if XP1000
 SUBDIRS += XtrendRemote SF8VFDControl
 endif
 
-if SPARK
-SUBDIRS += SparkVFDControl SparkUnionTunerType SH4BoosterControl SH4OSDAdjustment
-endif
-
 if OSMIO4K
 SUBDIRS += SimpleFancontrol
 endif
@@ -446,10 +438,6 @@ if VUPLUS
 SUBDIRS += HbbTV AudioEffect
 endif
 
-if HAVE_AMLPLUGINS
-SUBDIRS += RCUSelect ReZap
-endif
-
 if XC7362
 SUBDIRS += VPLEDControl
 endif
@@ -470,22 +458,14 @@ if OSNINOPLUS
 SUBDIRS += VPLEDControl
 endif
 
-if HAVE_LIBVUPLDEMO
-SUBDIRS += libvupldemo
-endif
-
-if HAVE_VUSTALKER
-SUBDIRS += VuStalker
-endif
-
 if HAVE_VUEXTRAS
-SUBDIRS += VuChromium libvupldemo witaispeechtotext WebkitHbbTV VuBluetoothSetup VuStalker
+SUBDIRS += VuChromium witaispeechtotext WebkitHbbTV VuBluetoothSetup
 endif
 
 if HAVE_GBEXTRAS
 SUBDIRS += GigaBlueChromium GigaBlueBluetoothSetup
 endif
 
-if HAVE_PYTHON3
-SUBDIRS += PiconManager
+if HAVE_BTSUPPORT
+SUBDIRS += BTDevicesManager
 endif

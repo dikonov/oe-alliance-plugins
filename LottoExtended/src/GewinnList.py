@@ -137,25 +137,25 @@ class GewinnListScreen(Screen):
 		self["key_blue"] = Button()
 		self["statuslabel"] = Label()
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
-			{
-			 "back": self.close,
-			 "red": self.prevDraw,
-			 "green": self.keyDetail,
-			 "yellow": self.keyDelete,
-			 "blue": self.nextDraw,
+		{
+			"back": self.close,
+			"red": self.prevDraw,
+			"green": self.keyDetail,
+			"yellow": self.keyDelete,
+			"blue": self.nextDraw,
 #			 "blue": self.changeZiehung,
-			 "up": self.up,
-			 "down": self.down,
-			 "left": self.left,
-			 "right": self.down,
-			 "ok": self.keyEditTipp
+			"up": self.up,
+			"down": self.down,
+			"left": self.left,
+			"right": self.down,
+			"ok": self.keyEditTipp
 #			 "ok": self.keyNoAction
-			 }, -1)
+		}, -1)
 		self.onLayoutFinish.append(self.newDrawing)
 		#self.newDrawing(currdate)
 
 	def newDrawing(self, datum=None):
-		if datum != None:
+		if datum is not None:
 			self.currDate = datum
 		self.ziehung = self.ziehungen.drawings[self.currDate]
 		self.gezogen = list(map(int, self.ziehung.strLotto))
@@ -191,7 +191,7 @@ class GewinnListScreen(Screen):
 			tipplist.append(self.buildListboxEntry(tipp))
 		self["tipplist"].setList(tipplist)
 		if self.gewinne:
-			if self.ziehung.lottoquote == None:
+			if self.ziehung.lottoquote is None:
 				self["statuslabel"].setText("Quoten wurden noch nicht ermittelt")
 			if self.totalsumme:
 				self["statuslabel"].setText("Gewinnsumme: %s € - ohne Gewähr -" % num2FormStr(self.totalsumme))
@@ -247,7 +247,7 @@ class GewinnListScreen(Screen):
 							tipp.lottotreffer = list(map(lambda x, y: x + y, tipp.lottotreffer, SYSTEMTAB[systemtipp][pos]))
 						else:
 							tipp.lottotreffer[pos] += 1
-			if self.gewinne and self.ziehung.lottoquote != None:
+			if self.gewinne and self.ziehung.lottoquote is not None:
 				self.computeGewinnSumme(tipp)
 				self.totalsumme += tipp.gewinnSumme
 
@@ -541,17 +541,17 @@ class GewinnDetailScreen(Screen):
 			self["key_yellow"].text = ""
 		self["statuslabel"] = Label()
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
-			{
-			 "back": self.close,
-			 "blue": self.close,
-			 "yellow": self.nextEntry,
-			 "green": self.previousEntry,
-			 "up": self.detaillist.selectPrevious,
-			 "down": self.detaillist.selectNext,
-			 "left": self.detaillist.pageUp,
-			 "right": self.detaillist.pageDown,
-			 "ok": self.keyNoAction
-			}, -1)
+		{
+			"back": self.close,
+			"blue": self.close,
+			"yellow": self.nextEntry,
+			"green": self.previousEntry,
+			"up": self.detaillist.selectPrevious,
+			"down": self.detaillist.selectNext,
+			"left": self.detaillist.pageUp,
+			"right": self.detaillist.pageDown,
+			"ok": self.keyNoAction
+		}, -1)
 
 		self.onLayoutFinish.append(self.initialBuild)
 

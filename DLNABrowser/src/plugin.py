@@ -57,7 +57,7 @@ class DLNAFileList(FileList):
 	def __init__(self, directory):
 		self.rootDir = directory
 		inhibitDirs = ["/bin", "/boot", "/dev", "/etc", "/lib", "/proc", "/sbin", "/sys", "/usr", "/var"]
-		matchingPattern = "(?i)^.*\.(m4a|mp2|mp3|wav|ogg|flac|ts|avi|divx|m4v|mpg|mpeg|mkv|mp4|mov|m2ts|jpg|jpeg|png|bmp)"
+		matchingPattern = r"(?i)^.*\.(m4a|mp2|mp3|wav|ogg|flac|ts|avi|divx|m4v|mpg|mpeg|mkv|mp4|mov|m2ts|jpg|jpeg|png|bmp)"
 		FileList.__init__(self, directory=directory, matchingPattern=matchingPattern, showDirectories=True, showFiles=True, inhibitMounts=[], inhibitDirs=inhibitDirs, isTop=True)
 
 	def changeTop(self):
@@ -230,7 +230,7 @@ class DLNAFileBrowser(Screen):
 					fileType = self["filelist"].getFileType()
 					newFiles = [fileDir + str(f[0][0])]
 				if len(newFiles) > 0:
-					if not fileType is None and fileType != 'unknown':
+					if fileType is not None and fileType != 'unknown':
 						if firstFileType is None or fileType == firstFileType:
 							firstFileType = fileType
 							files = files + newFiles
@@ -533,14 +533,14 @@ class DLNAImageViewer(Screen):
 
 	def setPictureLoadPara(self):
 		self.pictureLoad.setPara([self["image"].instance.size().width(),
-					  self["image"].instance.size().height(),
-					  1,
-					  1,
-					  0,
-					  int(config.pic.resize.value),
-					  '#00000000'])
+			self["image"].instance.size().height(),
+			1,
+			1,
+			0,
+			int(config.pic.resize.value),
+			'#00000000'])
 		self["icon"].hide()
-		if config.pic.infoline.value == False:
+		if config.pic.infoline.value is False:
 			self["message"].setText("")
 		self.startDecode()
 
@@ -548,12 +548,12 @@ class DLNAImageViewer(Screen):
 		for x in fileList:
 			l = len(fileList[0])
 			if l == 3:
-				if x[0][1] == False:
+				if x[0][1] is False:
 					self.fileList.append(path + x[0][0])
 				else:
 					self.directoryCount += 1
 			elif l == 2:
-				if x[0][1] == False:
+				if x[0][1] is False:
 					self.fileList.append(x[0][0])
 				else:
 					self.directoryCount += 1
@@ -581,7 +581,7 @@ class DLNAImageViewer(Screen):
 	def finishDecode(self, picInfo=""):
 		self["status"].hide()
 		ptr = self.pictureLoad.getData()
-		if ptr != None:
+		if ptr is not None:
 			text = ""
 			try:
 				text = picInfo.split('\n', 1)
@@ -600,7 +600,7 @@ class DLNAImageViewer(Screen):
 
 	def cbSlideShow(self):
 		print("slide to next Picture index=%s" % str(self.lsatIndex))
-		if config.pic.loop.value == False and self.lsatIndex == self.fileListLen:
+		if config.pic.loop.value is False and self.lsatIndex == self.fileListLen:
 			self.PlayPause()
 		self.displayNow = True
 		self.showPicture()
@@ -768,7 +768,7 @@ class DLNAClientConfig(ConfigListScreen, Screen):
 		def setDefault(key, default):
 			try:
 				value = self.oldConfig.get(key)
-				if value == None or value.strip() == '':
+				if value is None or value.strip() == '':
 					self.oldConfig[key] = default
 			except:
 				self.oldConfig[key] = default
@@ -810,7 +810,7 @@ class DLNADeviceBrowser(Screen):
 			<widget source="key_blue" render="Label" position="455,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#18188b" foregroundColor="#ffffff" transparent="1" />
 
 			<widget name="devicelist" position="0,50" size="600,300" backgroundColor="#000000" zPosition="10" scrollbarMode="showOnDemand" />
-	        </screen>
+		</screen>
 		"""
 
 	def __init__(self, session):
@@ -998,7 +998,7 @@ def autostart(reason, **kwargs):
 			else:
 				print("[DLNABrowser] starting ...")
 				os.system(cmd)
-		elif config.plugins.dlnabrowser.autostart.value == False and is_running == True:
+		elif config.plugins.dlnabrowser.autostart.value is False and is_running is True:
 				print("[DLNABrowser] stopping ...")
 				os.system(cmd)
 

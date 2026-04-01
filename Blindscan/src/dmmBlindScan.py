@@ -45,8 +45,8 @@ class DmmBlindscanState(Screen):
 		<widget source="list" render="Listbox" position="%d,%d" size="%d,%d" scrollbarMode="showAlways" >
 			<convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (%d, %d), size = (%d, %d), flags = RT_HALIGN_LEFT, text = %d) ],
-				 "fonts": [gFont("Regular", %d)],
-				 "itemHeight": %d
+					"fonts": [gFont("Regular", %d)],
+					"itemHeight": %d
 				}
 			</convert>
 		</widget>
@@ -603,12 +603,12 @@ class DmmBlindscan(ConfigListScreen, Screen, SatelliteTransponderSearchSupport, 
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
 		if self.scan_nims.value == "":  # no usable nims were found (handled in createConfig())
-			self["introduction"] = Label(_("Please setup your tuner configuration."))
+			self["footnote"] = Label(_("Please setup your tuner configuration."))
 		else:
 			self.createSetup()
-			self["introduction"] = Label(_("Press OK to start the scan."))
+			self["footnote"] = Label(_("Press OK to start the scan."))
 
-		if not self.selectionChanged in self["config"].onSelectionChanged:
+		if self.selectionChanged not in self["config"].onSelectionChanged:
 			self["config"].onSelectionChanged.append(self.selectionChanged)
 		self.selectionChanged()
 
@@ -956,16 +956,16 @@ class DmmBlindscan(ConfigListScreen, Screen, SatelliteTransponderSearchSupport, 
 			else:
 				nimconfig = nim.config
 		if nimconfig.configMode.getValue() == "advanced":
-			if nimconfig.advanced.sats.value in ("3605", "3606"):
+			if str(nimconfig.advanced.sats.value) in ("3605", "3606"):
 				currSat = nimconfig.advanced.sat[int(nimconfig.advanced.sats.value)]
 				import ast
 				userSatellitesList = ast.literal_eval(currSat.userSatellitesList.getValue())
-				if not cur_orb_pos in userSatellitesList:
+				if cur_orb_pos not in userSatellitesList:
 					currSat = nimconfig.advanced.sat[cur_orb_pos]
 			else:
 				currSat = nimconfig.advanced.sat[cur_orb_pos]
 			lnbnum = int(currSat.lnb.getValue())
-			if lnbnum == 0 and nimconfig.advanced.sats.value in ("3601", "3602", "3603", "3604"):
+			if lnbnum == 0 and str(nimconfig.advanced.sats.value) in ("3601", "3602", "3603", "3604"):
 				lnbnum = 65 + int(nimconfig.advanced.sats.value) - 3601
 			currLnb = nimconfig.advanced.lnb[lnbnum]
 			if isinstance(currLnb, ConfigNothing):

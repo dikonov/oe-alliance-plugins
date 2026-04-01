@@ -325,7 +325,7 @@ class Blindscan(ConfigListScreen, Screen, TransponderFiltering):
 		else:
 			self["actions3"].setEnabled(False)
 
-		if not self.selectionChanged in self["config"].onSelectionChanged:
+		if self.selectionChanged not in self["config"].onSelectionChanged:
 			self["config"].onSelectionChanged.append(self.selectionChanged)
 		self.selectionChanged()
 
@@ -831,12 +831,12 @@ class Blindscan(ConfigListScreen, Screen, TransponderFiltering):
 			eDVBFrontendParametersSatellite.RollOff_alpha_0_35,
 			eDVBFrontendParametersSatellite.Pilot_Off)
 		)  # OpenATV enigma2 needs patching so the other 3 fields can be added here.
-		  # Missing patches:
-		  # https://github.com/OpenPLi/enigma2/commit/9b0a0fcafaf3e96172a05ba8cf992a5aa64d4abc#diff-9124337eaf07c5d7314ae98b4eac37ef
-		  # https://github.com/OpenPLi/enigma2/commit/31100de1c93ce55ccc96340b21a02cc122bdb23e#diff-9124337eaf07c5d7314ae98b4eac37ef
-		  # https://github.com/OpenPLi/enigma2/commit/4030ed7c718accbcbc511a238b3b1abb288bb2f8#diff-021996494dde61d73519d0ab55099cb4
-		  # https://github.com/OpenPLi/enigma2/commit/7c0e71a5d059be5b0ac6df623e5810793938c09a#diff-d2b5b80c343086e51125ca863f948965
-		  # https://github.com/OpenPLi/enigma2/commit/597a9eec8f91d02c44c15d7a22e12e14d21589a6#diff-d2b5b80c343086e51125ca863f948965
+		# Missing patches:
+		# https://github.com/OpenPLi/enigma2/commit/9b0a0fcafaf3e96172a05ba8cf992a5aa64d4abc#diff-9124337eaf07c5d7314ae98b4eac37ef
+		# https://github.com/OpenPLi/enigma2/commit/31100de1c93ce55ccc96340b21a02cc122bdb23e#diff-9124337eaf07c5d7314ae98b4eac37ef
+		# https://github.com/OpenPLi/enigma2/commit/4030ed7c718accbcbc511a238b3b1abb288bb2f8#diff-021996494dde61d73519d0ab55099cb4
+		# https://github.com/OpenPLi/enigma2/commit/7c0e71a5d059be5b0ac6df623e5810793938c09a#diff-d2b5b80c343086e51125ca863f948965
+		# https://github.com/OpenPLi/enigma2/commit/597a9eec8f91d02c44c15d7a22e12e14d21589a6#diff-d2b5b80c343086e51125ca863f948965
 
 		nim = nimmanager.nim_slots[self.feid]
 		tunername = nim.description
@@ -916,9 +916,8 @@ class Blindscan(ConfigListScreen, Screen, TransponderFiltering):
 			else:
 				self.session.open(MessageBox, _("Blindscan executable not found '%s'!") % exe_path, MessageBox.TYPE_ERROR)
 				return
-		elif BRAND in ('azbox', 'ceryon', 'amiko', 'clap', 'dinobot', 'gigablue', 'ini', 'home', 'uclan', 'vuplus', 'xtrend') or MODEL.startswith('sf8008') or MACHINEBUILD in ('dags72604', 'dagsmv200', 'sfx6008', 'sx88v2'):
-			exe_filename = BRAND == 'azbox' and "avl_azbox_blindscan" or \
-							BRAND == 'amiko' and "amiko-blindscan" or \
+		elif BRAND in ('ceryon', 'amiko', 'clap', 'dinobot', 'gigablue', 'ini', 'home', 'uclan', 'vuplus', 'xtrend') or MODEL.startswith('sf8008') or MACHINEBUILD in ('dags72604', 'dagsmv200', 'sfx6008', 'sx88v2'):
+			exe_filename = BRAND == 'amiko' and "amiko-blindscan" or \
 							BRAND == 'ceryon' and "ceryon_blindscan" or \
 							BRAND == 'clap' and "clap_blindscan" or \
 							BRAND == 'dinobot' and "dinobot-blindscan" or \
@@ -940,8 +939,6 @@ class Blindscan(ConfigListScreen, Screen, TransponderFiltering):
 					cmd += " %d" % self.is_c_band_scan
 				if BRAND in ('clap', 'dinobot', 'uclan', 'amiko') or MODEL.startswith('sf8008') or MACHINEBUILD in ('gbmv200', 'dags72604', 'dagsmv200', 'sfx6008', 'sx88v2'):
 					cmd += " %d" % orb[0]
-				if BRAND in ('azbox',):
-					self.polsave = tab_pol[pol]  # Data returned by the binary is not good we must save polarisation
 				if BRAND in ('clap'):
 					self.frontend and self.frontend.closeFrontend()
 				if BRAND in ('uclan', 'amiko') or MACHINEBUILD in ('gbmv200'):  # or MODEL.startswith('sf8008')
@@ -1145,10 +1142,7 @@ class Blindscan(ConfigListScreen, Screen, TransponderFiltering):
 						"CIRCULARLEFT": parm.Polarisation_CircularLeft,
 						"VERTICAL": parm.Polarisation_Vertical}
 					parm.orbital_position = self.orb_position
-					if BRAND == 'azbox':
-						parm.polarisation = self.polsave
-					else:
-						parm.polarisation = pol.get(data[1], parm.Polarisation_Horizontal)
+					parm.polarisation = pol.get(data[1], parm.Polarisation_Horizontal)
 					parm.frequency = int(data[2])
 					parm.symbol_rate = int(data[3])
 					parm.system = sys.get(data[4], parm.System_DVB_S)
@@ -1202,7 +1196,7 @@ class Blindscan(ConfigListScreen, Screen, TransponderFiltering):
 		self.blindscan_session = None
 		self.releaseFrontend()
 
-		if val[0] == False:
+		if val[0] is False:
 			self.tmp_tplist = []
 			self.running_count = self.max_count
 
@@ -1244,7 +1238,7 @@ class Blindscan(ConfigListScreen, Screen, TransponderFiltering):
 
 			# Filter off transponders on neighbouring satellites
 			if int(config.blindscan.filter_off_adjacent_satellites.value):
-				 self.tmp_tplist = self.filterOffAdjacentSatellites(self.tmp_tplist, self.orb_position, int(config.blindscan.filter_off_adjacent_satellites.value))
+				self.tmp_tplist = self.filterOffAdjacentSatellites(self.tmp_tplist, self.orb_position, int(config.blindscan.filter_off_adjacent_satellites.value))
 
 			# Process transponders still in list
 			if self.tmp_tplist != []:
@@ -1301,13 +1295,13 @@ class Blindscan(ConfigListScreen, Screen, TransponderFiltering):
 
 		else:
 			msg = _("No transponders were found for those search parameters!")
-			if val[0] == False:
+			if val[0] is False:
 				msg = _("The blindscan run was cancelled by the user.")
 			self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, timeout=60)
 			self.tmp_tplist = []
 
 	def startScan(self, *retval):
-		if retval[0] == False:
+		if retval[0] is False:
 			return
 
 		tlist = retval[1]
@@ -1505,16 +1499,16 @@ class Blindscan(ConfigListScreen, Screen, TransponderFiltering):
 			else:
 				nimconfig = nim.config
 		if nimconfig.configMode.getValue() == "advanced":
-			if nimconfig.advanced.sats.value in ("3605", "3606"):
+			if str(nimconfig.advanced.sats.value) in ("3605", "3606"):
 				currSat = nimconfig.advanced.sat[int(nimconfig.advanced.sats.value)]
 				import ast
 				userSatellitesList = ast.literal_eval(currSat.userSatellitesList.getValue())
-				if not cur_orb_pos in userSatellitesList:
+				if cur_orb_pos not in userSatellitesList:
 					currSat = nimconfig.advanced.sat[cur_orb_pos]
 			else:
 				currSat = nimconfig.advanced.sat[cur_orb_pos]
 			lnbnum = int(currSat.lnb.getValue())
-			if lnbnum == 0 and nimconfig.advanced.sats.value in ("3601", "3602", "3603", "3604"):
+			if lnbnum == 0 and str(nimconfig.advanced.sats.value) in ("3601", "3602", "3603", "3604"):
 				lnbnum = 65 + int(nimconfig.advanced.sats.value) - 3601
 			currLnb = nimconfig.advanced.lnb[lnbnum]
 			if isinstance(currLnb, ConfigNothing):

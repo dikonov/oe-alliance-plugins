@@ -291,11 +291,16 @@ class Channelnumber:
 							led_sdb1 = config.plugins.VFD_Giga.ledSDB1.getValue()
 			except:
 				pass
+
 		try:
-			#not all images support recording type indicators
-			recordings = self.session.nav.getRecordings(False, Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue()))
+			# Not all images have getIndicatorRecordingsCount
+			recordings = self.session.nav.getIndicatorRecordingsCount()
 		except:
-			recordings = self.session.nav.getRecordings()
+			try:
+				# Not all images support recording type indicators / TODO: This should be replaced by getIndicatorRecordingsCount
+				recordings = self.session.nav.getRecordings(False, Components.RecordingConfig.recType(config.recording.show_rec_symbol_for_rec_types.getValue()))
+			except:
+				recordings = self.session.nav.getRecordings()
 		led_rec = "0"
 		if recordings:
 			self.updatetime = 1000
@@ -600,10 +605,10 @@ def controlgigaLED():
 	global gReason
 	global mySession
 
-	if gReason == 0 and mySession != None and gigaLED == None:
+	if gReason == 0 and mySession is not None and gigaLED is None:
 		print("[LED-GIGA] Starting !!")
 		gigaLED = LED_Giga(mySession)
-	elif gReason == 1 and gigaLED != None:
+	elif gReason == 1 and gigaLED is not None:
 		print("[LED-GIGA] Stopping !!")
 		gigaLED = None
 

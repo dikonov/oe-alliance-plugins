@@ -344,7 +344,7 @@ class DLNAServer(ConfigListScreen, Screen):
 		def setDefault(key, default):
 			try:
 				value = self.oldConfig.get(key)
-				if value == None or value.strip() == '':
+				if value is None or value.strip() == '':
 					self.oldConfig[key] = default
 			except:
 				self.oldConfig[key] = default
@@ -391,11 +391,11 @@ def autostart(reason, **kwargs):
 			else:
 				print("[DLNAServer] starting ...")
 				os.system(cmd)
-		elif config.plugins.dlnaserver.autostart.value == False and is_running == True:
+		elif config.plugins.dlnaserver.autostart.value is False and is_running is True:
 				print("[DLNAServer] stopping ...")
 				os.system(cmd)
 
 
 def Plugins(**kwargs):
- 	return [PluginDescriptor(name="DLNA Server", description="This is dlna server using minidlna.", where=PluginDescriptor.WHERE_PLUGINMENU, needsRestart=False, fnc=main),
-		PluginDescriptor(where=[PluginDescriptor.WHERE_AUTOSTART], fnc=autostart)]
+	return [PluginDescriptor(name="DLNA Server", description="This is dlna server using minidlna.", where=PluginDescriptor.WHERE_PLUGINMENU, needsRestart=False, fnc=main),
+			PluginDescriptor(where=[PluginDescriptor.WHERE_AUTOSTART], fnc=autostart)]

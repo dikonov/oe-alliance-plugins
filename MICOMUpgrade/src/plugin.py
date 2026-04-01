@@ -38,126 +38,126 @@ if os.path.exists("/proc/stb/info/boxtype"):
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS100_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS100_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-1000ru":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS100RU_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS100RU_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-1000sv":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS100SV_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS100SV_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-1000de":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS100DE_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS100DE_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-1000am":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS300AM_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS300AM_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-2000am":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS200AM_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS200AM_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-2000sv":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS200SV_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS200SV_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-3000":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS300_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS300_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-5000":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS500_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS500_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-5000ru":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS500RU_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS500RU_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-5000sv":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS500SV_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS500SV_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-7000":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS700_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS700_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-7012":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS712_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS712_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-7012au":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "RHS712AU_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "RHS712AU_Micom.bin", "/dev/dbox/oled0;/dev/mcu;"]
 			}
 	elif info == "ini-8000am":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "INI800AM_Micom.bin", "/proc/vfd;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "INI800AM_Micom.bin", "/proc/vfd;/dev/mcu;"]
 			}
 	elif info == "ini-8000sv":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "INI800SV_Micom.bin", "/proc/vfd;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "INI800SV_Micom.bin", "/proc/vfd;/dev/mcu;"]
 			}
 	elif info == "ini-9000de":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "INI900DE_Micom.bin", "/proc/vfd;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "INI900DE_Micom.bin", "/proc/vfd;/dev/mcu;"]
 			}
 	elif info == "ini-9000ru":
 		fwlist = [
 			("fp", _("Front Panel"))
 			]
 		fwdata = {
-			 "micom": ["http://micom.mynonpublic.com/software/micom/", "INI900RU_Micom.bin", "/proc/vfd;/dev/mcu;"]
+				"micom": ["http://micom.mynonpublic.com/software/micom/", "INI900RU_Micom.bin", "/proc/vfd;/dev/mcu;"]
 			}
 
 
@@ -233,14 +233,14 @@ class Filebrowser(Screen):
 			self.check_ext = False
 			if (self.firmware == "micom" and checkExt(".bin")):
 				self.check_ext = True
-			if self.check_ext == False:
+			if self.check_ext is False:
 				self.session.open(MessageBox, _("You chose the incorrect file."), MessageBox.TYPE_INFO)
 				return
 		except:
 			self.session.open(MessageBox, _("You chose the incorrect file."), MessageBox.TYPE_INFO)
 			return
 
-		if os.path.exists("/usr/bin/md5sum") == False:
+		if os.path.exists("/usr/bin/md5sum") is False:
 			self.session.open(MessageBox, _("Can't find /usr/bin/md5sum"), MessageBox.TYPE_INFO, timeout=10)
 			return
 		md5sum_A = os.popen("md5sum %s | awk \'{print $1}\'" % (self.gbin)).readline().strip()
@@ -477,11 +477,11 @@ class FirmwareUpgrade(Screen):
 			except:
 				self["status"].setText("Press the Green/OK button, if you want to upgrade to this file:\n%s\n" % (data))
 			self.updateFilePath = data
-			if self.fileopenmode == False:
+			if self.fileopenmode is False:
 				self.upgrade_auto_run_timer.start(1000)
 
 	def cbRunUpgrade(self, ret):
-		if ret == False:
+		if ret is False:
 			return
 
 		if self.updateFilePath == "":
